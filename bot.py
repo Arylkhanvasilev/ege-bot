@@ -55,12 +55,6 @@ def is_allowed(user_id: int) -> bool:
 # ─── Команды ──────────────────────────────────────────────────────────────────
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    if not is_allowed(user_id):
-        await update.message.reply_text(
-            "🔒 У тебя нет доступа к боту.\n"
-            "Попроси администратора добавить тебя командой /add"
-        )
-        return
     await update.message.reply_text(
         "👋 Привет! Я Виктор Андреевич — твой репетитор по ЕГЭ!\n\n"
         "📚 Я помогу тебе:\n"
@@ -181,15 +175,6 @@ async def list_users(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ─── Основной обработчик сообщений ───────────────────────────────────────────
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-
-    if not is_allowed(user_id):
-        await update.message.reply_text(
-            f"🔒 У тебя нет доступа.\n"
-            f"Твой ID: `{user_id}`\n"
-            f"Попроси администратора добавить тебя командой /add {user_id}",
-            parse_mode="Markdown"
-        )
-        return
 
     user_text = update.message.text
 
