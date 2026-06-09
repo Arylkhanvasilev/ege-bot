@@ -13,7 +13,7 @@ client = OpenAI(
     api_key=os.getenv("OPENROUTER_API_KEY"),
 )
 
-MODEL = "qwen/qwen3-4b-instruct:free"
+MODEL = "openai/gpt-oss-120b:free"
 
 # ─── Доступ ───────────────────────────────────────────────────────────────────
 ADMIN_ID = 6467846884
